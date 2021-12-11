@@ -20,9 +20,9 @@ public class Main {
         }
     }
 
-    public static void printOutput(String variable_name, double value, String crisp_output) {
-        System.out.println("\nPredicted Value (" + variable_name + ") = " + value);
-        System.out.println(variable_name + " will be " + crisp_output);
+    public static void printOutput(double value, String crisp_output) {
+        System.out.println("\nPredicted Value (Risk) = " + value);
+        System.out.println("Risk will be " + crisp_output);
     }
 
     public static void main(String[] args) {
@@ -34,13 +34,14 @@ public class Main {
         double project_fund = getCrispInput("Project Fund");
         double experience_level = getCrispInput("Experience Level");
 
-        /*
-        double output_value = 37.5;
-        String output_variable_name = "Risk";
-        String crisp_output = "Normal";
+        FuzzySolver fuzzy_model = new FuzzySolver(project_fund, experience_level);
 
-        printOutput(output_variable_name, output_value, crisp_output);
-         */
+        fuzzy_model.solve();
+
+        double output_value = fuzzy_model.getOutputValue();
+        String crisp_output = fuzzy_model.getCrispOutput();
+
+        printOutput(output_value, crisp_output);
 
     }
 }
