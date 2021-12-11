@@ -1,6 +1,4 @@
 package com.FuzzyLogic;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -16,10 +14,15 @@ public class Main {
                 return user_input;
             }
             catch(Exception InputMismatchException) {
-                System.out.println("Only real numbers are allowed!\n");
+                System.out.println("[!] Only real numbers are allowed!\n");
                 input_stream.next();
             }
         }
+    }
+
+    public static void printOutput(String variable_name, double value, String crisp_output) {
+        System.out.println("\nPredicted Value (" + variable_name + ") = " + value);
+        System.out.println(variable_name + " will be " + crisp_output);
     }
 
     public static void main(String[] args) {
@@ -31,7 +34,13 @@ public class Main {
         double project_fund = getCrispInput("Project Fund");
         double experience_level = getCrispInput("Experience Level");
 
-        System.out.println(project_fund + " " + experience_level);
+        /*
+        double output_value = 37.5;
+        String output_variable_name = "Risk";
+        String crisp_output = "Normal";
+
+        printOutput(output_variable_name, output_value, crisp_output);
+         */
 
     }
 }
