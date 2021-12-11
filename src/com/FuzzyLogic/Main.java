@@ -38,8 +38,6 @@ public class Main {
 
         fuzzy_model.solve();
 
-        System.out.println(fuzzy_model.crisp_experience_level);
-
         double output_value = fuzzy_model.getOutputValue();
         String crisp_output = fuzzy_model.getCrispOutput();
 

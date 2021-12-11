@@ -10,8 +10,8 @@ public class FuzzySolver {
     }
 
     public void solve() {
-        ProjectFundingFuzzifier project_funding_fuzzifier = new ProjectFundingFuzzifier();
-        this.project_funding_membership = project_funding_fuzzifier.getMembership(this.crisp_project_fund);
+        ProjectFundingFuzzifier project_funding_fuzzifier = new ProjectFundingFuzzifier(this.crisp_project_fund);
+        this.project_funding_membership = project_funding_fuzzifier.getMembership();
     }
 
     public double getOutputValue() {
