@@ -1,10 +1,9 @@
 package com.FuzzyLogic;
 
 public class TeamExperienceLevelFuzzifier {
-    private double crisp_experience_level;
+    private double[] membership_values = {0, 0, 0};
 
-    public TeamExperienceLevelFuzzifier(double crisp_experience_level) {
-        this.crisp_experience_level = crisp_experience_level;
+    public TeamExperienceLevelFuzzifier() {
     }
 
     private double beginnerFuzzifier(double crisp_experience_level) {
@@ -34,14 +33,13 @@ public class TeamExperienceLevelFuzzifier {
         return 0;
     }
 
-    public double[] getMembership() {
-        double[] membership = {0, 0, 0};
+    public void fuzzify(double crisp_experience_level) {
+        this.membership_values[0] = beginnerFuzzifier(crisp_experience_level);
+        this.membership_values[1] = intermediateFuzzifier(crisp_experience_level);
+        this.membership_values[2] = expertFuzzifier(crisp_experience_level);
+    }
 
-        membership[0] = beginnerFuzzifier(this.crisp_experience_level);
-        membership[1] = intermediateFuzzifier(this.crisp_experience_level);
-        membership[2] = expertFuzzifier(this.crisp_experience_level);
-
-        return membership;
-
+    public double[] getMembershipValues() {
+        return this.membership_values;
     }
 }
