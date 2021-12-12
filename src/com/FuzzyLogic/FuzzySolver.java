@@ -3,6 +3,8 @@ package com.FuzzyLogic;
 public class FuzzySolver {
     private double crisp_project_fund, crisp_experience_level;
     private double[] project_funding_membership_values, experience_level_membership_values;
+    private double output_value;
+    private String crisp_output;
 
     public FuzzySolver(double project_fund, double experience_level) {
         this.crisp_project_fund = project_fund;
@@ -10,6 +12,8 @@ public class FuzzySolver {
     }
 
     public void solve() {
+
+        // fuzzifying input crisp values
         ProjectFundingFuzzifier project_funding_fuzzifier = new ProjectFundingFuzzifier();
         project_funding_fuzzifier.fuzzify(this.crisp_project_fund);
         this.project_funding_membership_values = project_funding_fuzzifier.getMembershipValues();
@@ -17,13 +21,18 @@ public class FuzzySolver {
         TeamExperienceLevelFuzzifier team_experience_level_fuzzifier = new TeamExperienceLevelFuzzifier();
         team_experience_level_fuzzifier.fuzzify(this.crisp_experience_level);
         this.experience_level_membership_values = team_experience_level_fuzzifier.getMembershipValues();
+
+        // Bahaa part: evaluation of rules (from membership values to 3 values of risks)
+
+
+        // Tawaty part: Defuzzification (from 3 values of risks to risk value and crisp output)
     }
 
     public double getOutputValue() {
-        return 37.5;
+        return this.output_value; // e.g. 37.5
     }
 
     public String getCrispOutput() {
-        return "Normal";
+        return this.crisp_output; // e.g. "Normal"
     }
 }
