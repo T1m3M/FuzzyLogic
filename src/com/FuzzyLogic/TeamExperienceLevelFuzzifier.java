@@ -3,9 +3,6 @@ package com.FuzzyLogic;
 public class TeamExperienceLevelFuzzifier {
     private double[] membership_values = {0, 0, 0};
 
-    public TeamExperienceLevelFuzzifier() {
-    }
-
     private double beginnerFuzzifier(double crisp_experience_level) {
         if (crisp_experience_level >= 0 && crisp_experience_level <= 15)
             return (1.0/15) * crisp_experience_level;

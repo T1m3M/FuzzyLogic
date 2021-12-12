@@ -1,11 +1,7 @@
 package com.FuzzyLogic;
 
 public class ProjectFundingFuzzifier {
-    private double crisp_project_fund;
-
-    public ProjectFundingFuzzifier(double crisp_project_fund) {
-        this.crisp_project_fund = crisp_project_fund;
-    }
+    private double[] membership_values = {0, 0, 0, 0};
 
     private double veryLowFuzzifier(double crisp_project_fund) {
         if (crisp_project_fund >= 0 && crisp_project_fund <= 10)
@@ -53,15 +49,12 @@ public class ProjectFundingFuzzifier {
         return 0;
     }
 
-    public double[] getMembership() {
-        double[] membership = {0, 0, 0, 0};
-
-        membership[0] = veryLowFuzzifier(this.crisp_project_fund);
-        membership[1] = lowFuzzifier(this.crisp_project_fund);
-        membership[2] = mediumFuzzifier(this.crisp_project_fund);
-        membership[3] = highFuzzifier(this.crisp_project_fund);
-
-        return membership;
-
+    public void fuzzify(double crisp_project_fund) {
+        this.membership_values[0] = veryLowFuzzifier(crisp_project_fund);
+        this.membership_values[1] = lowFuzzifier(crisp_project_fund);
+        this.membership_values[2] = mediumFuzzifier(crisp_project_fund);
+        this.membership_values[3] = highFuzzifier(crisp_project_fund);
     }
+
+    public double[] getMembershipValues() { return this.membership_values; }
 }

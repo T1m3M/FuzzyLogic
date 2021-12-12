@@ -10,8 +10,9 @@ public class FuzzySolver {
     }
 
     public void solve() {
-        ProjectFundingFuzzifier project_funding_fuzzifier = new ProjectFundingFuzzifier(this.crisp_project_fund);
-        this.project_funding_membership_values = project_funding_fuzzifier.getMembership();
+        ProjectFundingFuzzifier project_funding_fuzzifier = new ProjectFundingFuzzifier();
+        project_funding_fuzzifier.fuzzify(this.crisp_project_fund);
+        this.project_funding_membership_values = project_funding_fuzzifier.getMembershipValues();
 
         TeamExperienceLevelFuzzifier team_experience_level_fuzzifier = new TeamExperienceLevelFuzzifier();
         team_experience_level_fuzzifier.fuzzify(this.crisp_experience_level);
