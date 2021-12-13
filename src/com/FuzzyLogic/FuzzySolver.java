@@ -1,5 +1,6 @@
 package com.FuzzyLogic;
 
+import javax.sound.midi.SysexMessage;
 import java.util.Arrays;
 
 public class FuzzySolver {
@@ -24,14 +25,20 @@ public class FuzzySolver {
         team_experience_level_fuzzifier.fuzzify(this.crisp_experience_level);
         this.experience_level_membership_values = team_experience_level_fuzzifier.getMembershipValues();
 
-        // Bahaa part: evaluation of rules (from membership values to 3 values of risks)
+        // Evaluation of rules (from membership values to fuzzy values of risks)
         RulesEvaluator rules_evaluator = new RulesEvaluator();
         rules_evaluator.addFuzzyInputs(this.project_funding_membership_values, this.experience_level_membership_values);
         rules_evaluator.evaluate();
         this.fuzzy_risk_output = rules_evaluator.getFuzzyOutput();
 
 
-        // Tawaty part: Defuzzification (from 3 values of risks to risk value and crisp output)
+        // Defuzzification (from 3 values of risks to risk value and crisp output)
+        Defuzzifier risk_defuzzifier = new Defuzzifier();
+        risk_defuzzifier.addFuzzySet(this.fuzzy_risk_output);
+        risk_defuzzifier.defuzzify();
+
+        this.output_value = risk_defuzzifier.getDefuzzifiedValue();
+        this.crisp_output = risk_defuzzifier.getDefuzzifiedCrisp();
     }
 
     public double getOutputValue() {
