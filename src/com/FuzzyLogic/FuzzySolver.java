@@ -42,10 +42,10 @@ public class FuzzySolver {
     }
 
     public double getOutputValue() {
-        return this.output_value; // e.g. 37.5
+        return this.output_value;
     }
 
     public String getCrispOutput() {
-        return this.crisp_output; // e.g. "Normal"
+        return this.crisp_output;
     }
 }
