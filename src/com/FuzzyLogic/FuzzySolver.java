@@ -1,8 +1,5 @@
 package com.FuzzyLogic;
 
-import javax.sound.midi.SysexMessage;
-import java.util.Arrays;
-
 public class FuzzySolver {
     private double crisp_project_fund, crisp_experience_level;
     private double[] project_funding_membership_values, experience_level_membership_values, fuzzy_risk_output;
